@@ -1,43 +1,47 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
+import { View, Text, Button } from "react-native";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { connect } from "react-redux";
+import CartItem from "./cart/cartItem";
 
 class ShoppingCart extends React.Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            items: []
-        }
-    }
+    this.state = {
+      items: this.props.items,
+    };
+  }
 
-    render() {
+  render() {
+    const masterItems = this.props.items.map((item) => {
+      return <CartItem item={item} />;
+    });
 
-        let masterItems = this.state.items.map(item => {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Items</Text>
+        <ScrollView style={{ width: "100%" }}>
+          <View>{masterItems}</View>
+        </ScrollView>
 
-            <Text>{item.name}</Text>
-
-        })
-
-        return (
-            <View>
-                <Text>
-                    Items
-                </Text>
-
-                {masterItems}
-
-            </View>
-        )
-    }
+        <Button
+          title="Checkout"
+          onPress={() =>
+            this.props.navigation.navigate("ADDRESS", {
+              navigation: this.props.navigation,
+            })
+          }
+        />
+      </View>
+    );
+  }
 }
 
-const mapStateToProps = state => {
-    return {
-        items: state.items
-    }
-}
+const mapStateToProps = (state) => {
+  return {
+    items: state.items,
+  };
+};
 
 export default connect(mapStateToProps, null)(ShoppingCart);
-

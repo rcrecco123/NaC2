@@ -16,7 +16,12 @@ class NavBar extends React.Component {
       <View style={{ marginTop: 40 }}>
         <Text>Cart Array Length: {this.props.count}</Text>
         <Text>ARR COUNT: {this.props.items}</Text>
-        <Button title="check out">Check Out</Button>
+        <Button
+          title="check out"
+          onPress={() => this.props.navigation.navigate("CART")}
+        >
+          Check Out
+        </Button>
       </View>
     );
   }

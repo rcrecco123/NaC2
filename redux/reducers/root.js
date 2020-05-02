@@ -4,14 +4,27 @@ const initialState = {
   items: [
     {
       name: "dress",
+      price: 15.99,
     },
     {
       name: "dress2",
+      price: 15.99,
     },
     {
       name: "dress3",
+      price: 15.99,
     },
   ],
+  address: {
+    billingAddress: "",
+    billingZip: "",
+    billingState: "",
+    billingName: "",
+    shippingAddress: "",
+    shippingZip: "",
+    shippingState: "",
+    shippingName: "",
+  },
 };
 
 function rootReducer(state = initialState, action) {

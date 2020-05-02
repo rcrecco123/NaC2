@@ -14,20 +14,18 @@ class itemShow extends React.Component {
     this.state = {
       value: "",
       size: "",
-      price: this.props.navigation.state.params.itemObject.price,
+      price: this.props.route.params.itemObject.price,
     };
   }
 
   componentDidMount() {}
 
   render() {
-    let navigation = this.props.navigation; //access to navigation
-
     return (
       <ScrollView style={{ height: 100, borderWidth: 1, padding: 25 }}>
         <View style={styles.main}>
           <Text style={{ padding: 7, fontSize: 25 }}>
-            {this.props.navigation.state.params.name}
+            {this.props.route.params.name}
           </Text>
           <Image
             source={require("../assets/clothingitem1.jpeg")}
@@ -53,7 +51,7 @@ class itemShow extends React.Component {
           <Button
             title="add to cart"
             onPress={() =>
-              this.props.addItem(this.props.navigation.state.params.itemObject)
+              this.props.addItem(this.props.route.params.itemObject)
             }
           />
         </View>
