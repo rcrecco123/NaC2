@@ -14,6 +14,7 @@ class itemShow extends React.Component {
     this.state = {
       value: "",
       size: "",
+      sizeError: "",
       price: this.props.route.params.itemObject.price,
     };
   }
@@ -32,28 +33,36 @@ class itemShow extends React.Component {
             resizeMode="contain"
             style={styles.image}
           />
-          <Text>{this.state.price}</Text>
-          <RNPickerSelect
-            onValueChange={(value) =>
-              this.setState({
-                size: value,
-              })
-            }
-            placeholder={{ label: "select a size" }}
-            items={[
-              { label: "s", value: "small" },
-              { label: "m", value: "medium" },
-              { label: "l", value: "large" },
-              { label: "xl", value: "extra large" },
-            ]}
-          />
+
+          <View>
+            <Text>{this.state.price}</Text>
+            <RNPickerSelect
+              onValueChange={(value) =>
+                this.setState({
+                  size: value,
+                  sizeError: "",
+                })
+              }
+              placeholder={{ label: "select a size" }}
+              items={[
+                { label: "s", value: "small" },
+                { label: "m", value: "medium" },
+                { label: "l", value: "large" },
+                { label: "xl", value: "extra large" },
+              ]}
+            />
+          </View>
 
           <Button
+            style={styles.button}
             title="add to cart"
             onPress={() =>
-              this.props.addItem(this.props.route.params.itemObject)
+              this.state.size
+                ? this.props.addItem(this.props.route.params.itemObject)
+                : this.setState({ sizeError: "Please select a size" })
             }
           />
+          <Text>{this.state.sizeError}</Text>
         </View>
 
         {/* <RelatedProducts /> */}
@@ -64,13 +73,19 @@ class itemShow extends React.Component {
 
 const styles = StyleSheet.create({
   main: {
-    borderWidth: 2,
+    borderWidth: 0,
     alignItems: "center",
     height: 400,
   },
   image: {
     height: 300,
     width: 300,
+  },
+  button: {},
+  view: {
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "center",
   },
 });
 
