@@ -50,7 +50,7 @@ export default class ItemList extends React.Component {
 
     return (
       <ScrollView style={styles.scrollView}>
-        <Text style={styles.header}>{this.props.route.params.item}</Text>
+        <Text style={styles.header}>{this.props.route.params.itemz}</Text>
         <View style={styles.itemContainer}>{itemsComps}</View>
       </ScrollView>
     );

@@ -23,8 +23,8 @@ import Review from "./components/reviewOrder";
 
 firebase.initializeApp(firebaseConfig);
 
-var storage = firebase.storage();
-var storageRef = storage.ref();
+// var storage = firebase.app("nickle-and-chance");
+// var storageRef = storage.ref();
 
 const Tab = createBottomTabNavigator();
 
