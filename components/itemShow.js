@@ -34,7 +34,9 @@ class itemShow extends React.Component {
             style={styles.image}
           />
 
-          <View>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
             <Text>{this.state.price}</Text>
             <RNPickerSelect
               onValueChange={(value) =>
@@ -82,11 +84,11 @@ const styles = StyleSheet.create({
     width: 300,
   },
   button: {},
-  view: {
-    display: "flex",
-    flexDirection: "column",
-    alignContent: "center",
-  },
+  // view: {
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   alignContent: "center",
+  // },
 });
 
 const mapStateToProps = (state) => {
